@@ -1,0 +1,130 @@
+body{
+  background-image: url("../images/background.png");
+
+}
+
+.container-fluid{
+position: relative;
+max-width: 700px;
+border: 2px solid green;
+}
+
+.quiz{
+  top:0;
+  border: 2px dashed gold;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.question{
+	text-align: center;
+	color: black;
+    font-weight: bold;
+    font-size: 1.5em;
+	position: relative;
+	margin: 0 auto;
+	width:625px;
+	height:150px;
+	border: 2px solid blue;
+}
+
+.answer{
+  border:2px solid black;
+  margin:5px;
+  position: relative;
+  background: tomato;
+  width: 300px;
+  height: 100px;
+  margin-top: 10px;
+  line-height: 100px;
+  color: white;
+  font-weight: bold;
+  font-size: 1em;
+  text-align: center;
+}
+
+#wins{
+  font-size: 2em;
+}
+
+.player{
+  border:2px solid black;
+  margin:5px;
+  position: relative;
+  background: tomato;
+  width: 300px;
+  height: 100px;
+  margin-top: 10px;
+  line-height: 100px;
+  color: white;
+  font-weight: bold;
+  font-size: 1em;
+  text-align: center;
+
+}
+
+.hidden { display: none; }
+
+.level{
+  border:2px solid black;
+  margin:5px;
+  position: relative;
+  background: tomato;
+  width: 300px;
+  height: 100px;
+  margin-top: 10px;
+  line-height: 100px;
+  color: white;
+  font-weight: bold;
+  font-size: 1em;
+  text-align: center;
+}
+
+.cat{
+  border:2px solid black;
+  margin:5px;
+  position: relative;
+  background: tomato;
+  width: 300px;
+  height: 100px;
+  margin-top: 10px;
+  line-height: 100px;
+  color: white;
+  font-weight: bold;
+  font-size: 1em;
+  text-align: center;
+}
+
+#myProgress {
+  width: 100%;
+  background-color: #ddd;
+}
+
+#myBar {
+  width: 1%;
+  height: 30px;
+  background-color: #4CAF50;
+}
+
+.replay{
+  border:2px solid black;
+  margin:5px;
+  position: relative;
+  background: tomato;
+  width: 300px;
+  height: 100px;
+  margin-top: 10px;
+  line-height: 100px;
+  color: white;
+  font-weight: bold;
+  font-size: 1em;
+  text-align: center;
+}
