@@ -17,6 +17,9 @@ var questions = [];
 var answer;
 var elem = document.getElementById("myBar");   
 var width = 1;
+var theme = document.getElementById("theme");
+var bgSound = document.getElementById("back-noise");
+var amt = 10;
 
 $(".level").hide();
 $(".cat").hide();
@@ -25,13 +28,7 @@ $("#wins").hide();
 $("#myProgress").hide();
 $(".replay").hide();
 
-$(".player").on("click", function(){
-  if ($(this).html() == "Easy"){
-    players = "single";
-  }
-  else if ($(this).html() == "Medium"){
-    players = "multi";
-  }
+$(".single").on("click", function(){
   $(".player").hide(1000);
   $(".level").show(1000);
 });
@@ -45,9 +42,11 @@ $(".level").on("click", function(){
   }
   else if ($(this).html() == "Hard"){
     diff = "hard";
+    amt = 4;
   }
   $(".level").hide(1000);
   $(".cat").show(1000);
+  //bgSound.src = "assets/sounds/"
 });
 
 $(".cat").on("click", function(){
@@ -66,9 +65,10 @@ $(".cat").on("click", function(){
   else if ($(this).html() == "Japanese Anime and Manga"){
     cat = "31";
   }
-  else if ($(this).html() == "Celebrities"){
-    cat = "26";
+  else if ($(this).html() == "Animals"){
+    cat = "27";
   }
+
   $(".cat").hide(1000);
   $(".quiz").show(1000);
   $("#wins").show(1000);
@@ -88,9 +88,8 @@ $(".cat").on("click", function(){
       return array;
     }
 
-
     function createQuestions(){
-    var queryURL = "https://opentdb.com/api.php?amount=10&category="+cat+"&difficulty="+diff+"&type=multiple";
+    var queryURL = "https://opentdb.com/api.php?amount="+ amt +"&category="+ cat +"&difficulty="+diff+"&type=multiple";
       
        $.ajax({
           url: queryURL,
@@ -100,7 +99,8 @@ $(".cat").on("click", function(){
           //jsonp : "callback"
         }).done(function(response) {
 
-          if (question <= 9){
+          //If we haven't reached the end of the questions 
+          if (question <= (amt-1)){
             for (var i = 0; i<response.results.length; i++){
               questions[i] = response.results[i];
             }
@@ -108,6 +108,7 @@ $(".cat").on("click", function(){
             for (var j = 0; j < 3; j++){
               answers[j] = response.results[question].incorrect_answers[j];
             }
+
             console.log(question);
             answers[3] = response.results[question].correct_answer;
             answer = response.results[question].correct_answer;
@@ -135,13 +136,15 @@ $(".cat").on("click", function(){
       var myAnswer = ($(this).html());
        if(myAnswer === answer){
           console.log("Correct!");
+          bgSound.src = "assets/sounds/correct.mp3";
           question++;
           createQuestions();
           width = 1;
           wins++;
        }
        else { console.log("Wrong!");
-       question++;
+        bgSound.src = "assets/sounds/wrong.mp3";
+        question++;
         createQuestions();
         width =1;
       }
@@ -150,7 +153,7 @@ $(".cat").on("click", function(){
 
 
     //Create a progress bar
-    var id = setInterval(frame, 100);
+    var id = setInterval(frame, 200);
 
     function frame() {
       if (width >= 100) {
@@ -204,7 +207,8 @@ $(".cat").on("click", function(){
       $("#wins").hide();
       $("#myProgress").hide();
       stop();
-      $(".replay").show(3000);
+      //setTimeOut(
+        $(".replay").show(2000);
     }
 
 
@@ -217,7 +221,7 @@ $(".cat").on("click", function(){
 });
 
 function restart(){
-        document.location.reload();
+  document.location.reload();
 }
 
 $(".replay").on("click", function(){

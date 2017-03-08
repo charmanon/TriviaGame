@@ -7,8 +7,8 @@
     </title>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
-    <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet">
     <!-- <link href="assets/css/reset.css" rel="stylesheet" type="text/css">
      --><link href="assets/css/style.css" rel="stylesheet" type="text/css">
     <link href="assets/images/favicon.ico" rel="shortcut icon" type="image/x-icon">
@@ -19,11 +19,14 @@
   </head>
   <body>
     <main class="container-fluid">
-      <header><img src = </header>
+      <audio controls loop id="theme" autoplay="autoplay" src="assets/sounds/theme.mp3"></audio>
+      <audio loop id="back-noise" autoplay="autoplay" src=""></audio>
+      <header><img src = "assets/images/trivia.png"></header>
       <div class = "selection">
         <section class = "player single">Single
         </section>
         <section class = "player multi">Multiplayer
+          <span class="tooltiptext">Coming soon!</span>
         </section>
         <section class = "level" id="easy">Easy</section>
         <section class = "level" id="medium">Medium</section>
@@ -33,9 +36,9 @@
         <section class = "cat" id="sports">Sports</section>
         <section class = "cat" id="history">History</section>
         <section class = "cat" id="anime">Japanese Anime and Manga</section>
-        <section class = "cat" id="celeb">Celebrities</section>
+        <section class = "cat" id="celeb">Animals</section>
       </div>
-      <div id="wins">Correct:</div>
+      <div id="wins">Correct: 0</div>
       <div id="myProgress">
         <div id="myBar"></div>
       </div>

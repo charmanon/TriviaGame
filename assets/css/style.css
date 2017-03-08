@@ -1,17 +1,41 @@
 body{
   background-image: url("../images/background.png");
+  font-family: 'Crimson Text', serif;
+  font-size: 2em;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  color:black;
+}
 
+header{
+  text-align: center;
 }
 
 .container-fluid{
 position: relative;
 max-width: 700px;
-border: 2px solid green;
+/*border: 2px solid green;*/
 }
+
+.selection{
+  color:black;
+  top:0;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;  
+}
+
 
 .quiz{
   top:0;
-  border: 2px dashed gold;
+  /*border: 2px dashed gold;*/
   padding: 0;
   margin: 0;
   list-style: none;
@@ -25,30 +49,37 @@ border: 2px solid green;
 }
 
 .question{
+  line-height: 50px;
 	text-align: center;
 	color: black;
-    font-weight: bold;
-    font-size: 1.5em;
+  font-weight: bold;
+  font-size: 1.5em;
 	position: relative;
 	margin: 0 auto;
 	width:625px;
 	height:150px;
-	border: 2px solid blue;
+	border: 2px solid black;
+  border-radius: 25px;
 }
 
 .answer{
   border:2px solid black;
   margin:5px;
   position: relative;
-  background: tomato;
+  background: beige;
   width: 300px;
   height: 100px;
   margin-top: 10px;
   line-height: 100px;
-  color: white;
+  color: black;
   font-weight: bold;
   font-size: 1em;
   text-align: center;
+  border-radius: 25px;
+}
+
+.answer:hover {
+  background: lightsalmon;
 }
 
 #wins{
@@ -59,7 +90,7 @@ border: 2px solid green;
   border:2px solid black;
   margin:5px;
   position: relative;
-  background: tomato;
+  background: mediumorchid;
   width: 300px;
   height: 100px;
   margin-top: 10px;
@@ -68,10 +99,32 @@ border: 2px solid green;
   font-weight: bold;
   font-size: 1em;
   text-align: center;
-
+  border-radius: 25px;
 }
 
-.hidden { display: none; }
+.multi .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    bottom: 25%;
+    left: 50%; 
+    margin-left: -100px; 
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.multi:hover .tooltiptext{
+  visibility: visible;
+}
+
+.cat{
+ border-radius: 25px;
+}
 
 .level{
   border:2px solid black;
@@ -86,6 +139,7 @@ border: 2px solid green;
   font-weight: bold;
   font-size: 1em;
   text-align: center;
+  border-radius: 25px;
 }
 
 .cat{
@@ -103,18 +157,71 @@ border: 2px solid green;
   text-align: center;
 }
 
+#easy{
+  background: green;
+}
+
+#medium{
+  background: darkorange;
+}
+
+#hard{
+  background: firebrick;
+}
+
+#science{
+  background: lightgreen;
+}
+
+#video{
+  background: goldenrod;  
+}
+
+#sports{
+  background: coral;
+}
+
+#history{
+  background: crimson;
+}
+
+#anime{
+  background: darkorchid;
+}
+
+#celeb{
+  background: deepskyblue;
+}
+
+.player:hover {
+  opacity: 0.7;
+}
+
+.level:hover {
+  opacity: 0.7;
+}
+
+.cat:hover {
+  opacity: 0.7;
+}
+
 #myProgress {
   width: 100%;
   background-color: #ddd;
+  margin-bottom: 5px;
+  border-radius: 25px;
 }
 
 #myBar {
   width: 1%;
   height: 30px;
-  background-color: #4CAF50;
+  background-color: dodgerblue;
+  margin-bottom: 10px;
+  border-radius: 25px;
 }
 
 .replay{
+  left: 25%; 
   border:2px solid black;
   margin:5px;
   position: relative;
@@ -127,4 +234,14 @@ border: 2px solid green;
   font-weight: bold;
   font-size: 1em;
   text-align: center;
+  border-radius:25px;
+}
+
+.replay:hover {
+  opacity: 0.6;
+}
+
+#theme{
+  opacity: 0.4;
+  bottom:0;
 }
