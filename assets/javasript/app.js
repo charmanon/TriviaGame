@@ -42,7 +42,7 @@ $(".level").on("click", function(){
   }
   else if ($(this).html() == "Hard"){
     diff = "hard";
-    amt = 4;
+    //amt = 4;
   }
   $(".level").hide(1000);
   $(".cat").show(1000);
@@ -90,13 +90,20 @@ $(".cat").on("click", function(){
 
     function createQuestions(){
     var queryURL = "https://opentdb.com/api.php?amount="+ amt +"&category="+ cat +"&difficulty="+diff+"&type=multiple";
-      
+    
+
        $.ajax({
           url: queryURL,
           dataType: "json",
           crossDomain: true,
           method:"GET",
         }).done(function(response) {
+          if (response.response_code === 1){
+           amt--;
+           console.log(response.response_code);
+           createQuestions();
+          }
+          
 
           for (var i = 0; i<response.results.length; i++){
               questions[i] = response.results[i];

@@ -50,6 +50,7 @@ max-width: 700px;
 }
 
 .question{
+  padding:3px;
   line-height: 100%;
 	text-align: center;
 	color: black;
