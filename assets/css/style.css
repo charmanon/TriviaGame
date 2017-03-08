@@ -1,10 +1,9 @@
 body{
   background-image: url("../images/background.png");
   font-family: 'Crimson Text', serif;
-  font-size: 2em;
+  font-size: 1.5em;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  color:black;
 }
 
 header{
@@ -30,6 +29,8 @@ max-width: 700px;
   display: flex;
   -webkit-flex-flow: row wrap;
   justify-content: space-around;  
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 
@@ -49,7 +50,7 @@ max-width: 700px;
 }
 
 .question{
-  line-height: 50px;
+  line-height: 100%;
 	text-align: center;
 	color: black;
   font-weight: bold;
@@ -57,7 +58,7 @@ max-width: 700px;
 	position: relative;
 	margin: 0 auto;
 	width:625px;
-	height:150px;
+	height:200px;
 	border: 2px solid black;
   border-radius: 25px;
 }
@@ -124,6 +125,9 @@ max-width: 700px;
 
 .cat{
  border-radius: 25px;
+ word-wrap: break-word;
+ overflow-wrap: break-word;
+ line-height: 20px;
 }
 
 .level{

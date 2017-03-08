@@ -96,30 +96,33 @@ $(".cat").on("click", function(){
           dataType: "json",
           crossDomain: true,
           method:"GET",
-          //jsonp : "callback"
         }).done(function(response) {
 
+          for (var i = 0; i<response.results.length; i++){
+              questions[i] = response.results[i];
+          }
+          console.log(questions);
+          nextQuestion();
+    });
+    }
+
+
+    function nextQuestion(){
           //If we haven't reached the end of the questions 
           if (question <= (amt-1)){
-            for (var i = 0; i<response.results.length; i++){
-              questions[i] = response.results[i];
-            }
-
             for (var j = 0; j < 3; j++){
-              answers[j] = response.results[question].incorrect_answers[j];
+              answers[j] = questions[question].incorrect_answers[j];
             }
-
             console.log(question);
-            answers[3] = response.results[question].correct_answer;
-            answer = response.results[question].correct_answer;
+            answers[3] = questions[question].correct_answer;
+            answer = questions[question].correct_answer;
 
             shuffleArray(answers);
 
             display(questions[question].question, answers);
           }
           else gameOver();
-        });
-
+        
     }
 
 
@@ -138,14 +141,14 @@ $(".cat").on("click", function(){
           console.log("Correct!");
           bgSound.src = "assets/sounds/correct.mp3";
           question++;
-          createQuestions();
+          nextQuestion();
           width = 1;
           wins++;
        }
        else { console.log("Wrong!");
         bgSound.src = "assets/sounds/wrong.mp3";
         question++;
-        createQuestions();
+        nextQuestion();
         width =1;
       }
       $("#wins").html("Correct: "+wins);
@@ -157,7 +160,7 @@ $(".cat").on("click", function(){
 
     function frame() {
       if (width >= 100) {
-        createQuestions();
+        nextQuestion();
           width =1;
           question++;
 
@@ -198,28 +201,21 @@ $(".cat").on("click", function(){
         });
     }
 
-    //reloads the game
-
-
     //ends the game and asks player to restart
     function gameOver(){
       $(".quiz").hide();
-      $("#wins").hide();
       $("#myProgress").hide();
       stop();
       //setTimeOut(
         $(".replay").show(2000);
     }
 
-
-
     //Initializes the first question
     createQuestions();
-
-
-
 });
 
+
+//reloads the game
 function restart(){
   document.location.reload();
 }
