@@ -10,9 +10,14 @@ header{
   text-align: center;
 }
 
+#theme{
+margin-left: 25%;
+}
+
 .container-fluid{
-position: relative;
-max-width: 700px;
+  position: relative;
+  max-width: 700px;
+  padding-bottom: 50px;
 /*border: 2px solid green;*/
 }
 
@@ -62,6 +67,9 @@ max-width: 700px;
 	height:200px;
 	border: 2px solid black;
   border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .answer{
@@ -72,12 +80,15 @@ max-width: 700px;
   width: 300px;
   height: 100px;
   margin-top: 10px;
-  line-height: 100px;
+  line-height: 30px;
   color: black;
   font-weight: bold;
   font-size: 1em;
   text-align: center;
   border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .answer:hover {
@@ -85,6 +96,9 @@ max-width: 700px;
 }
 
 #wins{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 2em;
 }
 
@@ -102,6 +116,9 @@ max-width: 700px;
   font-size: 1em;
   text-align: center;
   border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .multi .tooltiptext {
@@ -124,12 +141,6 @@ max-width: 700px;
   visibility: visible;
 }
 
-.cat{
- border-radius: 25px;
- word-wrap: break-word;
- overflow-wrap: break-word;
- line-height: 20px;
-}
 
 .level{
   border:2px solid black;
@@ -145,6 +156,9 @@ max-width: 700px;
   font-size: 1em;
   text-align: center;
   border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .cat{
@@ -155,11 +169,15 @@ max-width: 700px;
   width: 300px;
   height: 100px;
   margin-top: 10px;
-  line-height: 100px;
+  line-height: 20px;
   color: white;
   font-weight: bold;
   font-size: 1em;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 25px;
 }
 
 #easy{
@@ -249,4 +267,49 @@ max-width: 700px;
 #theme{
   opacity: 0.4;
   bottom:0;
+}
+
+@media handheld, screen and (max-width: 640px) {
+.container-fluid{
+position: relative;
+max-width: 540px;
+/*border: 2px solid green;*/
+}
+
+header img{
+  width:300px;
+  height:auto;
+}
+
+.player{
+  height:80px;
+}
+
+.cat{
+  height: 80px;
+  width:170px;
+}
+
+.level{
+  height:80px;
+}
+
+.question{
+  font-size: 0.7em;
+  height:100px;
+}
+
+.answer{
+  font-size: 0.7em;
+  height:75px;
+  width:170px;
+  line-height: 20px;
+}
+
+.replay{
+  width:180px;
+  height: 100px;
+  left:25%;
+}
+
 }

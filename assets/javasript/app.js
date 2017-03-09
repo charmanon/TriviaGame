@@ -88,9 +88,14 @@ $(".cat").on("click", function(){
       return array;
     }
 
+    function tryAgain(){
+      $("#wins").html("Sorry, please try again!");
+      setTimeout(function(){ 
+        gameOver() }, 3000);
+    }
+
     function createQuestions(){
     var queryURL = "https://opentdb.com/api.php?amount="+ amt +"&category="+ cat +"&difficulty="+diff+"&type=multiple";
-    
 
        $.ajax({
           url: queryURL,
@@ -99,17 +104,18 @@ $(".cat").on("click", function(){
           method:"GET",
         }).done(function(response) {
           if (response.response_code === 1){
-           amt--;
            console.log(response.response_code);
-           createQuestions();
+           tryAgain();
           }
           
-
-          for (var i = 0; i<response.results.length; i++){
+          else if (response.response_code === 0){
+            for (var i = 0; i<response.results.length; i++){
               questions[i] = response.results[i];
           }
+          shuffleArray(questions);
           console.log(questions);
           nextQuestion();
+        }
     });
     }
 
@@ -143,19 +149,30 @@ $(".cat").on("click", function(){
 
     //Checks for correct answer
     $(".answer").on("click", function (){
-      var myAnswer = ($(this).html());
+      //if correct, make background green
+      var myAnswer = ($(this).text());
        if(myAnswer === answer){
+          $(this).css("background", "green");
           console.log("Correct!");
           bgSound.src = "assets/sounds/correct.mp3";
           question++;
-          nextQuestion();
+          setTimeout(function(){ 
+            $(".answer").css("background", "beige");
+            nextQuestion(); }, 1500);
           width = 1;
           wins++;
        }
-       else { console.log("Wrong!");
+       else { 
+        //if chosen answer is wrong, make background red and highlight 
+        //correct answer in green
+        console.log("Wrong!");
+        $(this).css("background", "red");
+        $("section:contains("+answer+")").css("background","green");
         bgSound.src = "assets/sounds/wrong.mp3";
         question++;
-        nextQuestion();
+        setTimeout(function(){ 
+          $(".answer").css("background", "beige");
+          nextQuestion(); }, 1500);
         width =1;
       }
       $("#wins").html("Correct: "+wins);
@@ -170,7 +187,7 @@ $(".cat").on("click", function(){
         nextQuestion();
           width =1;
           question++;
-
+          bgSound.src = "assets/sounds/wrong.mp3";
         } else {
           width++; 
           elem.style.width = width + '%'; 
@@ -182,7 +199,8 @@ $(".cat").on("click", function(){
       clearInterval(id);
     }
 
-
+    //tokens for resetting question
+    //not implemented in this version
     function newToken(){
       var query = "https://opentdb.com/api_token.php?command=request";
 
@@ -210,10 +228,12 @@ $(".cat").on("click", function(){
 
     //ends the game and asks player to restart
     function gameOver(){
+      if (wins>=1){
+        theme.src = "assets/sounds/winning.wav";
+      }
       $(".quiz").hide();
       $("#myProgress").hide();
       stop();
-      //setTimeOut(
         $(".replay").show(2000);
     }
 
